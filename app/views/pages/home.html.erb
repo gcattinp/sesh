@@ -1,2 +1,5 @@
 <h1>sesh</h1>
-<p><%= link_to "Find artists in your city"  %></p>
+<%= form_tag instruments_path, method: :get do %>
+  <%= select_tag :city, options_for_select(Instrument.distinct.pluck(:city)) %>
+  <%= submit_tag "Search" %>
+<% end %>
