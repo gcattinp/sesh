@@ -11,7 +11,6 @@
   <div>
     <h3><%= instrument.name %></h3>
     <p>City: <%= instrument.city %></p>
+    <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
   </div>
 <% end %>
-
-
