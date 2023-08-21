@@ -9,5 +9,4 @@ class InstrumentsController < ApplicationController
     @name = @instrument.name
     @city = @instrument.city
   end
-
 end
