@@ -38,9 +38,9 @@ class InstrumentsController < ApplicationController
 
     if @instrument.user == current_user
       @instrument.destroy
-      redirect_to instruments_path, notice: "Instrument successfully deleted"
+      redirect_to dashboard_path, notice: "Instrument successfully deleted"
     else
-      redirect_to instruments_path, alert: "You don't have permission to delete this instrument"
+      rredirect_to dashboard_path, alert: "You don't have permission to delete this instrument"
     end
   end
 
