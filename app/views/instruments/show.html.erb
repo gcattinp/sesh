@@ -1,12 +1,12 @@
 <div class="container">
-  <p><%= @name %></p>
-  <p><%= @city %></p>
+  <p>Instrument: <%= @name %></p>
+  <p>City: <%= @city %></p>
+
 
   <% if user_signed_in? %>
-    <%= link_to 'Book this instrument', new_instrument_booking_path(@instrument) %>
+    <%= link_to 'Book', new_instrument_booking_path(@instrument) %>
   <% else %>
     <%= link_to 'Log in to book this instrument', new_user_session_path %>
   <% end %>
 </div>
 <%= link_to "Back to Instruments", instruments_path %>
-
