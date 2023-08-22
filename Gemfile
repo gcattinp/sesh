@@ -27,6 +27,9 @@ gem "stimulus-rails"
 # Devise
 gem "devise"
 
+# Cloudinary
+gem "cloudinary"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
