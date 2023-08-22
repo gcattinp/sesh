@@ -19,7 +19,14 @@
   <div>
     Instrument: <%= instrument.name %><br>
     Location: <%= instrument.city %><br>
-    <hr>
   </div>
+  <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure? }%>
+  <hr>
 <% end %>
+
 <%= link_to "Create Instrument", new_instrument_path %>
+
+
+
+
+<%= link_to "Back to Instruments", instruments_path %>
