@@ -1,4 +1,6 @@
-<h1>Your Bookings</h1>
+<h1>Your Dashboard</h1>
+
+<h2> Manage Bookings </h2>
 <% @bookings.each do |booking| %>
   <div>
     Instrument: <%= booking.instrument.name %><br>
@@ -10,5 +12,14 @@
     booking_path(booking),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
+<% end %>
+ <hr>
+<h2> Manage Instruments </h2>
+<% @instruments.each do |instrument| %>
+  <div>
+    Instrument: <%= instrument.name %><br>
+    Location: <%= instrument.city %><br>
+    <hr>
+  </div>
 <% end %>
 <%= link_to "Create Instrument", new_instrument_path %>
