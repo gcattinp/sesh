@@ -3,8 +3,9 @@
 <%= form_tag instruments_path, method: :get do %>
   <%= hidden_field_tag :city, params[:city] %>
   <%= text_field_tag :name, params[:name], placeholder: "Search for instrument..." %>
-  <%= submit_tag "Search", class: "btn btn-info mb-3" %> <!-- Added some classes for better styling -->
+  <%= submit_tag "Search", class: "btn btn-info mb-3" %>
 <% end %>
+
 <div class="row">
   <% @instruments.each do |instrument| %>
     <div class="col-md-4 mb-4">
@@ -20,15 +21,16 @@
             Description: <%= instrument.description %>
           </p>
           <p class="card-text">
-            Availability: <%= instrument.available %> minutes<br>
+            Availability: <%= instrument.available %> minutes/day<br>
             Price: $<%= instrument.price %>
           </p>
           <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
-          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" %> <!-- Added margin-top for better spacing -->
+          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
 <%= link_to "Add a New Instrument", new_instrument_path %>
 <%= link_to "Back to Dashboard", dashboard_path %>
