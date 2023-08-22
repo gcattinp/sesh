@@ -12,10 +12,12 @@
     <h3>Name: <%= instrument.name %></h3>
     <p>City: <%= instrument.city %></p>
     <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
-    <% if current_user == instrument.user %>
-      <li class="list-group-item">
-        <%= link_to "Delete instrument", instrument_path(instrument), data: {  turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger" %>
-      </li>
-    <% end %>
+    <li class="list-group-item">
+      <%= link_to "Delete instrument", instrument_path(instrument), data: {  turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </li>
   </div>
 <% end %>
+
+<%= link_to "Add a New Instrument", new_instrument_path %>
+
+<%= link_to "Back to Dashboard", dashboard_path %>
