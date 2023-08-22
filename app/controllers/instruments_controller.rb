@@ -35,10 +35,14 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument = Instrument.find(params[:id])
-    @instrument.destroy
-    redirect_to instruments_path, notice: "instrument successfully deleted"
-  end
 
+    if @instrument.user == current_user
+      @instrument.destroy
+      redirect_to instruments_path, notice: "Instrument successfully deleted"
+    else
+      redirect_to instruments_path, alert: "You don't have permission to delete this instrument"
+    end
+  end
 
   private
   def instrument_params
