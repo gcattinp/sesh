@@ -18,14 +18,19 @@
           <p class="card-text">
             City: <%= instrument.city %><br>
             Genre: <%= instrument.genre %><br>
-            Description: <%= instrument.description %>
+            Description: <%= instrument.description %><br>
+            Posted by: <%= instrument.user.username %>
           </p>
           <p class="card-text">
             Availability: <%= instrument.available %> minutes/day<br>
             Price: $<%= instrument.price %>
           </p>
-          <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
-          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" if current_user == instrument.user %>
+          <div class="d-flex justify-content-between mt-3">
+              <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary mr-2" %>
+              <% if current_user == instrument.user %>
+                  <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
