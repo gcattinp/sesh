@@ -25,7 +25,7 @@
             Price: $<%= instrument.price %>
           </p>
           <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
-          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" %>
+          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" if current_user == instrument.user %>
         </div>
       </div>
     </div>
