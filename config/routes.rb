@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
+  resources :instruments, only: [:destroy]
+  
   resources :pages, only: [:dashboard] do
     resources :bookings, only: [:show, :edit, :update, :destroy]
   end

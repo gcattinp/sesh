@@ -1,0 +1,19 @@
+<h1>Add a New Instrument</h1>
+
+<%= form_for @instrument do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_area :city %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Instrument" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Instruments", instruments_path %>
