@@ -9,7 +9,6 @@
 Instrument.destroy_all
 
 # Fetch the first 3 users
-users = User.first(3)
 
 # Predefined data
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
@@ -36,7 +35,7 @@ instruments.each do |instrument|
       genre: genres.sample,
       available: rand(20..200),
       price: rand(20..200),
-      user: users.sample # Associate with one of the existing users
+      user_id: rand(1..3) # Associate with one of the existing users
     )
 
     inst.image.attach(io: File.open(image_path), filename: img, content_type: 'image/png')
