@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Booking.destroy_all
 Instrument.destroy_all
+User.destroy_all
+
+user = User.create!(email: "a@gmail.com", password: 123456, username: "user1")
 
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
 cities = ["Madrid", "Paris", "London"]
