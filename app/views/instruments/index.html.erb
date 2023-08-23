@@ -3,14 +3,14 @@
 <%= form_tag instruments_path, method: :get do %>
   <%= hidden_field_tag :city, params[:city] %>
   <%= text_field_tag :name, params[:name], placeholder: "Search for instrument..." %>
-  <%= submit_tag "Search", class: "btn btn-info mb-3" %> <!-- Added some classes for better styling -->
+  <%= submit_tag "Search", class: "btn btn-info mb-3" %>
 <% end %>
 
 <div class="row">
   <% @instruments.each do |instrument| %>
-    <div class="col-md-4 mb-4"> <!-- Adjust the column size (col-md-4) as required -->
+    <div class="col-md-4 mb-4">
       <div class="card">
-        <% if instrument.image.present? %> <!-- Check if there's an image URL before rendering -->
+        <% if instrument.image.present? %>
           <img src="<%= instrument.image %>" class="card-img-top" alt="<%= instrument.name %>">
         <% end %>
         <div class="card-body">
@@ -18,16 +18,23 @@
           <p class="card-text">
             City: <%= instrument.city %><br>
             Genre: <%= instrument.genre %><br>
-            Description: <%= instrument.description %>
+            Description: <%= instrument.description %><br>
+            Posted by: <%= instrument.user.username %>
           </p>
           <p class="card-text">
-            Availability: <%= instrument.available %> minutes<br>
+            Availability: <%= instrument.available %> minutes/day<br>
             Price: $<%= instrument.price %>
           </p>
-          <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary" %>
-          <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger mt-2" %> <!-- Added margin-top for better spacing -->
+          <div class="d-flex justify-content-between mt-3">
+              <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary mr-2" %>
+              <% if current_user == instrument.user %>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<%= link_to "Add a New Instrument", new_instrument_path %>
+<%= link_to "Back to Dashboard", dashboard_path %>

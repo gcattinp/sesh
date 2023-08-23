@@ -1,19 +1,49 @@
-<h1>Add a New Instrument</h1>
+<h1 class="mb-4">Add a New Instrument</h1>
+<div class="container mt-5">
+  <%= form_for @instrument, html: { class: "needs-validation", novalidate: "" } do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "What instrument do you play?", class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", required: true %>
+    </div>
 
-<%= form_for @instrument do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="form-group">
+      <%= f.label :city, class: "form-label" %>
+      <%= f.text_field :city, class: "form-control", required: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_area :city %>
-  </div>
+    <div class="form-group">
+      <%= f.label :description, class: "form-label" %>
+      <%= f.text_area :description, class: "form-control", rows: "4", required: true %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Add Instrument" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :image, class: "form-label" %>
+      <%= f.text_field :image, class: "form-control" %>
+      <small class="form-text text-muted">Provide a direct URL for the image</small>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :available, "Availability", class: "form-label" %>
+      <%= f.number_field :available, class: "form-control", required: true %>
+      <small class="form-text text-muted">Availability in minutes per day</small>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price, class: "form-label" %>
+      <%= f.number_field :price, class: "form-control", step: "0.01", required: true %>
+      <small class="form-text text-muted">How much you charge per day</small>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :genre, class: "form-label" %>
+      <%= f.text_field :genre, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group mt-4">
+      <%= f.submit "Add Instrument", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to "Back to Instruments", instruments_path %>
+<%= link_to "Back to dashboard", dashboard_path %>
