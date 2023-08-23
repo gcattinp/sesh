@@ -1,49 +1,7 @@
-
-
-<h1>Add a New Instrument</h1>
-
-
-<%= form_for @instrument, html: { class: "show-container" } do |f| %>
-  <div class="show-card">
-    <%= f.label :name, class: 'form-label' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-    <%= f.label :city, class: 'form-label' %>
-    <%= f.text_area :city, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-    <%= f.label :genre, class: 'form-label' %>
-    <%= f.text_area :genre, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-    <%= f.label :description, class: 'form-label' %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-    <%= f.label :available, class: 'form-label' %>
-    <%= f.number_field :available, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-    <%= f.label :price, class: 'form-label' %>
-    <%= f.number_field :price, class: 'form-control' %>
-  </div>
-
-  <div class="show-card">
-  <%= f.label :image, class: 'form-label' %>
-  <%= f.file_field :image, class: 'form-control' %>
-  </div>
-
-
-  <div class="text-center">
-    <%= f.submit "Add Instrument", class: 'btn btn-primary' %>
-  </div>
-<% end %>
+<h1 class="mb-4">Add a New Instrument</h1>
+<div class="container mt-5">
+  <%= render 'form', instrument: @instrument %>
+</div>
 
 <%= link_to "Back to Instruments", instruments_path %>
 <%= link_to "Back to dashboard", dashboard_path %>

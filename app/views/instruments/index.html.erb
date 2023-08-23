@@ -6,13 +6,11 @@
   <%= submit_tag "Search", class: "search-button" %>
 <% end %>
 
-
-
 <div class="instrument-grid">
   <% @instruments.each do |instrument| %>
     <div class="instrument-card">
-      <% if instrument.image.present? %>
-        <img src="<%= instrument.image %>" alt="<%= instrument.name %>" class="instrument-card__img">
+      <% if instrument.image.attached? %>
+          <%= image_tag instrument.image, class: "instrument-card__img", alt: instrument.name %>
       <% end %>
       <h2><%= instrument.name %></h2>
       <p class="text-show-page"> <%= instrument.description %></p>
@@ -24,7 +22,6 @@
     </div>
   <% end %>
 </div>
-
 
 <div class="links_container">
   <div class="links">
