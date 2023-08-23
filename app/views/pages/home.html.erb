@@ -1,36 +1,50 @@
-<h1 id="h1-main">sesh</h1>
+ <div class="main-container">
+  <div class="left-container">
+    <h1 id="h1-main">sesh</h1>
+    <div class="container" data-controller="search">
+      <div id="city-box">
+        <h2>
+          <span
+          id="city-placeholder"
+          data-search-target="placeholder"
+          data-action="click->search#showSearch">
+          Find Your City</span>
 
-<div class="container" data-controller="search">
-  <div class="container">
-  <!-- City box -->
-  <div id="city-box">
-    <h2>
-      <span
-      id="city-placeholder"
-      data-search-target="placeholder"
-      data-action="click->search#showSearch">
-      Find Your City</span>
+          <input
+          type="text"
+          id="search-city"
+          data-search-target="search"
+          data-action="click->search#showPlaceholder
+          keyup->search#filter"
+          placeholder="Find your city..."
+          style="display: none;">
+        </h2>
 
-      <input
-      type="text"
-      id="search-city"
-      data-search-target="search"
-      data-action="click->search#showPlaceholder
-      keyup->search#filter"
-      placeholder="Find your city..."
-      style="display: none;">
-    </h2>
-    <!-- List of cities -->
-    <div id="city-list">
-      <% Instrument.distinct.pluck(:city).each do |city| %>
-        <div data-search-target="city">
-          <h3><%= link_to city, instruments_path(city: city), class: 'city-item' %></h3>
+        <div id="city-list">
+          <% Instrument.distinct.order(:city).pluck(:city).each do |city| %>
+            <div data-search-target="city">
+              <h3><%= link_to city, instruments_path(city: city), class: 'city-item' %></h3>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="right-container">
+    <div id="carousel-landing" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <%= image_tag("bass_player.jpeg", class: "d-block w-100", alt: "First slide") %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag("guitar_player.jpeg", class: "d-block w-100", alt: "Second slide") %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag("bass_player.jpeg", class: "d-block w-100", alt: "Third slide") %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<% if user_signed_in? %>
-  <%= link_to "My Dashboard", dashboard_path %>
-<% end %>

@@ -1,12 +1,12 @@
-<h1>Musicians in <%= params[:city] %></h1>
+<h1 class="page-title">Musicians in <%= params[:city] %></h1>
 
-<%= form_tag instruments_path, method: :get do %>
+<%= form_tag instruments_path, method: :get, class: "search-form" do %>
   <%= hidden_field_tag :city, params[:city] %>
-  <%= text_field_tag :name, params[:name], placeholder: "Search for instrument..." %>
-  <%= submit_tag "Search", class: "btn btn-info mb-3" %>
+  <%= text_field_tag :name, params[:name], placeholder: "Search for instrument...", class: "search-input" %>
+  <%= submit_tag "Search", class: "search-button" %>
 <% end %>
 
-<div class="row">
+<div class="instrument-grid">
   <% @instruments.each do |instrument| %>
     <div class="col-md-4 mb-4">
       <div class="card">
@@ -36,5 +36,9 @@
   <% end %>
 </div>
 
-<%= link_to "Add a New Instrument", new_instrument_path %>
-<%= link_to "Back to Dashboard", dashboard_path %>
+<div class="links_container">
+  <div class="links">
+    <%= link_to "Add a New Instrument", new_instrument_path, class: "link" %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "link" %>
+  </div>
+</div>
