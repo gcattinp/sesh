@@ -1,40 +1,31 @@
-<h1>Musicians in <%= params[:city] %></h1>
+<h1 class="page-title">Musicians in <%= params[:city] %></h1>
 
-<%= form_tag instruments_path, method: :get do %>
+<%= form_tag instruments_path, method: :get, class: "search-form" do %>
   <%= hidden_field_tag :city, params[:city] %>
-  <%= text_field_tag :name, params[:name], placeholder: "Search for instrument..." %>
-  <%= submit_tag "Search", class: "btn btn-info mb-3" %>
+  <%= text_field_tag :name, params[:name], placeholder: "Search for instrument...", class: "search-input" %>
+  <%= submit_tag "Search", class: "search-button" %>
 <% end %>
 
-<div class="row">
+<div class="instrument-grid">
   <% @instruments.each do |instrument| %>
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <% if instrument.image.attached? %>
-            <%= image_tag instrument.image, class: "card-img-top", alt: instrument.name %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= instrument.name %></h5>
-          <p class="card-text">
-            City: <%= instrument.city %><br>
-            Genre: <%= instrument.genre %><br>
-            Description: <%= instrument.description %><br>
-            Posted by: <%= instrument.user.username %>
-          </p>
-          <p class="card-text">
-            Availability: <%= instrument.available %> minutes/day<br>
-            Price: $<%= instrument.price %>
-          </p>
-          <div class="d-flex justify-content-between mt-3">
-              <%= link_to "Check Profile", instrument_path(instrument), class: "btn btn-primary mr-2" %>
-              <% if current_user == instrument.user %>
-              <% end %>
-          </div>
-        </div>
-      </div>
+    <div class="instrument-card">
+      <% if instrument.image.attached? %>
+          <%= image_tag instrument.image, class: "instrument-card__img", alt: instrument.name %>
+      <% end %>
+      <h2><%= instrument.name %></h2>
+      <p class="text-show-page"> <%= instrument.description %></p>
+      <p>Posted by: <%= instrument.user.username %></p>
+      <p><%= instrument.city %></p>
+      <p>From price: <%= instrument.price %></p>
+
+      <%= link_to "Check Instrument", instrument_path(instrument), class: "mr-2" %>
     </div>
   <% end %>
 </div>
 
-<%= link_to "Add a New Instrument", new_instrument_path %>
-<%= link_to "Back to Dashboard", dashboard_path %>
+<div class="links_container">
+  <div class="links">
+    <%= link_to "Add a New Instrument", new_instrument_path, class: "link" %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "link" %>
+  </div
+</div>
