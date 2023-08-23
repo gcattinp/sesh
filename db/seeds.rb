@@ -10,112 +10,30 @@ Instrument.destroy_all
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
 cities = ["Madrid", "Paris", "London"]
 
-Instrument.create!(
-  name: "Piano",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698144/piano_2_zvn2zw.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 1
-)
+instruments = [
+  { name: "Piano", img1: "piano_1.png", img2: "piano_2.png" },
+  { name: "Trumpet", img1: "trumpet_1.png", img2: "trumpet_2.png" },
+  { name: "Guitar", img1: "guitar_1.png", img2: "guitar_2.png" },
+  { name: "Bass", img1: "bass_1.png", img2: "bass_2.png" },
+  { name: "Drums", img1: "drum_1.png", img2: "drum_2.png" }
+]
 
-Instrument.create!(
-  name: "Piano",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698144/piano_1_x8hd1d.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 2
-)
+instruments.each do |instrument|
+  2.times do |i|
+    img = i.zero? ? instrument[:img1] : instrument[:img2]
+    image_path = Rails.root.join('db', 'seed_images', img)
 
-Instrument.create!(
-  name: "Trumpet",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698144/trumpet_2_epy3oj.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 1
-)
+    inst = Instrument.new(
+      name: instrument[:name],
+      description: Faker::Lorem.sentence(word_count: 5),
+      city: cities.sample,
+      genre: genres.sample,
+      available: rand(20..200),
+      price: rand(20..200),
+      user_id: i + 1
+    )
 
-Instrument.create!(
-  name: "Trumpet",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698144/trumpet_1_wwpwkl.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 2
-)
-
-Instrument.create!(
-  name: "Guitar",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/guitar_1_ngvizp.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 1
-)
-
-Instrument.create!(
-  name: "Guitar",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/guitar_2_ca6j10.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 2
-)
-
-Instrument.create!(
-  name: "Bass",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/bass_2_zvy13e.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 1
-)
-
-Instrument.create!(
-  name: "Bass",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/bass_1_k4zyza.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 2
-)
-
-Instrument.create!(
-  name: "Drums",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/drum_1_mvl24h.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 1
-)
-
-Instrument.create!(
-  name: "Drums",
-  description: Faker::Lorem.sentence(word_count: 5),
-  city: cities.sample,
-  image: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692698143/drum_2_xmultf.png",
-  genre: genres.sample,
-  available: rand(20..200),
-  price: rand(20..200),
-  user_id: 2
-)
+    inst.image.attach(io: File.open(image_path), filename: img, content_type: 'image/png')
+    inst.save!
+  end
+end

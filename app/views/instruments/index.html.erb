@@ -10,8 +10,8 @@
   <% @instruments.each do |instrument| %>
     <div class="col-md-4 mb-4">
       <div class="card">
-        <% if instrument.image.present? %>
-          <img src="<%= instrument.image %>" class="card-img-top" alt="<%= instrument.name %>">
+        <% if instrument.image.attached? %>
+            <%= image_tag instrument.image, class: "card-img-top", alt: instrument.name %>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= instrument.name %></h5>
