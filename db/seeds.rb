@@ -7,7 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 # Clear existing data for instruments
 Instrument.destroy_all
-User.destroy_all
 
 # Predefined data
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
@@ -41,3 +40,24 @@ instruments.each do |instrument|
     inst.save!
   end
 end
+
+User.create!(
+  email: "gcattin97@gmail.com",
+  password: '123456',
+  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  username: "cattin1"
+)
+
+User.create!(
+  email: "cattin@skiff.com",
+  password: '123456',
+  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  username: "cattin2"
+)
+
+User.create!(
+  email: "g.cattinp@alum.up.edu.pe",
+  password: '123456',
+  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  username: "cattin3"
+)
