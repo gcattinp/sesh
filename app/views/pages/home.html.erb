@@ -1,9 +1,35 @@
-<h1>sesh</h1>
+<h1 id="h1-main">sesh</h1>
 
-<%= form_tag instruments_path, method: :get do %>
-  <%= select_tag :city, options_for_select(Instrument.distinct.pluck(:city)) %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="container" data-controller="search">
+  <div class="container">
+  <!-- City box -->
+  <div id="city-box">
+    <h2>
+      <span
+      id="city-placeholder"
+      data-search-target="placeholder"
+      data-action="click->search#showSearch">
+      Find Your City</span>
+
+      <input
+      type="text"
+      id="search-city"
+      data-search-target="search"
+      data-action="click->search#showPlaceholder
+      keyup->search#filter"
+      placeholder="Find your city..."
+      style="display: none;">
+    </h2>
+    <!-- List of cities -->
+    <div id="city-list">
+      <% Instrument.distinct.pluck(:city).each do |city| %>
+        <div data-search-target="city">
+          <h3><%= link_to city, instruments_path(city: city), class: 'city-item' %></h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <% if user_signed_in? %>
   <%= link_to "My Dashboard", dashboard_path %>

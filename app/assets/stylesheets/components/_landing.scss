@@ -1,0 +1,54 @@
+#h1-main {
+  font-style: italic;
+  font-size: 250px;
+  padding-left: 90px;
+}
+
+#search-city {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+
+  &:focus {
+    background: white;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+#city-box {
+  padding-left: 20px;
+  border: solid 2px;
+  width: 500px;
+  height: 400px;
+  margin-left: 90px;
+  margin-right: 50px;
+  padding-right: 20px;
+}
+
+#city-box h2 {
+  font-size: 65px;
+  font-style: italic;
+  border-bottom: solid 1.5px;
+}
+
+.city-item {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
+
+  &:active, &:visited {
+    color: black;
+  }
+}
