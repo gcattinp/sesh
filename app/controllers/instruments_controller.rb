@@ -15,6 +15,12 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.find(params[:id])
     @name = @instrument.name
     @city = @instrument.city
+    @description = @instrument.description
+    @genre = @instrument.genre
+    @city = @instrument.city
+    @price = @instrument.price
+    @available = @instrument.available
+    @image = @instrument.image
   end
 
   def new
@@ -32,6 +38,9 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def edit
+    @instrument = Instrument.find(params[:id])
+  end
 
   def destroy
     @instrument = Instrument.find(params[:id])
