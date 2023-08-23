@@ -5,10 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# Clear existing data for instruments
 Instrument.destroy_all
 
+# Fetch the first 3 users
+users = User.first(3)
+
+# Predefined data
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
-cities = ["Madrid", "Paris", "London"]
+cities = ["Madrid", "Paris", "London", "Lima", "Berlin", "Lisbon", "Rome"]
 
 instruments = [
   { name: "Piano", img1: "piano_1.png", img2: "piano_2.png" },
@@ -18,6 +23,7 @@ instruments = [
   { name: "Drums", img1: "drum_1.png", img2: "drum_2.png" }
 ]
 
+# Seed the instruments
 instruments.each do |instrument|
   2.times do |i|
     img = i.zero? ? instrument[:img1] : instrument[:img2]
@@ -30,7 +36,7 @@ instruments.each do |instrument|
       genre: genres.sample,
       available: rand(20..200),
       price: rand(20..200),
-      user_id: i + 1
+      user: users.sample # Associate with one of the existing users
     )
 
     inst.image.attach(io: File.open(image_path), filename: img, content_type: 'image/png')
