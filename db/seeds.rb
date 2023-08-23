@@ -7,12 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 # Clear existing data for instruments
 Instrument.destroy_all
-
-# Fetch the first 3 users
+User.destroy_all
 
 # Predefined data
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
-cities = ["Madrid", "Paris", "London", "Lima", "Berlin", "Lisbon", "Rome"]
+cities = ["Madrid", "Paris", "London", "Lima", "Berlin", "Lisbon", "Rome", "Barcelona", "New York", "Tokyo"]
 
 instruments = [
   { name: "Piano", img1: "piano_1.png", img2: "piano_2.png" },
