@@ -1,5 +1,6 @@
 Instrument.destroy_all
 User.destroy_all
+Booking.destroy_all
 # Predefined data
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
 cities = ["Madrid", "Paris", "London", "Lima", "Berlin", "Lisbon", "Rome", "Barcelona", "New York", "Tokyo"]
@@ -15,21 +16,21 @@ instruments = [
 user1 = User.create!(
   email: "gcattin97@gmail.com",
   password: '123456',
-  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  password_confirmation: '123456',
   username: "cattin1"
 )
 
 user2 = User.create!(
   email: "cattin@skiff.com",
   password: '123456',
-  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  password_confirmation: '123456',
   username: "cattin2"
 )
 
 user3 = User.create!(
   email: "g.cattinp@alum.up.edu.pe",
   password: '123456',
-  password_confirmation: '123456', # This assumes you're using Devise's confirmable module
+  password_confirmation: '123456',
   username: "cattin3"
 )
 
