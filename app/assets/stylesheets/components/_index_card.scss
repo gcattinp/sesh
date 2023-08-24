@@ -24,12 +24,12 @@
 .show-card {
   width: 650px;
   background: #f1eaea;
-  border: 1px solid #e0e0e0;
-  border-radius: 0px;
+  border: 2px solid black;
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   background-color: #ffffff;
   margin: auto;
+  margin-top: 50px;
 }
 
 .show-title {
@@ -44,7 +44,6 @@
   width: 100%;
   max-height: 460px;
   object-fit: cover;
-  border-radius: 8px;
   margin-bottom: 25px;
 
 }
@@ -60,7 +59,6 @@
   background-color: #130102;
   color: white;
   padding: 8px 16px;
-  border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.2s ease;
@@ -80,7 +78,6 @@
   background-color: rgb(255, 255, 255);
   color: #212529;
   padding: 8px 16px;
-  border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.2s ease;
@@ -100,7 +97,6 @@
 .show-search-input {
   padding: 8px;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
   font-size: 0.9rem;
   width: 25%;
   padding: 10px;
@@ -114,7 +110,6 @@
   color: white;
   padding: 8px 16px;
   border: none;
-  border-radius: 1px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.2s ease;

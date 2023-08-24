@@ -40,13 +40,10 @@
   transition: background-color 0.3s;
 }
 
-.button-bookings:hover {
-  background-color: black;
-}
-
 .headers-bookings button:focus {
   background-color: white;
   color: black;
+  border: 2px solid black;
 }
 
 [data-dashboard-target="content"] {
@@ -101,4 +98,36 @@ hr {
 
 .delete-button:hover {
   color: darkred;
+}
+
+.instrument-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.instrument-container {
+  position: relative;
+  padding-right: 40px;
+}
+
+// scrollbar
+[data-dashboard-target="content"]::-webkit-scrollbar,
+#container-manage::-webkit-scrollbar {
+  width: 10px;
+}
+
+[data-dashboard-target="content"]::-webkit-scrollbar-track,
+#container-manage::-webkit-scrollbar-track {
+  background: white;
+}
+
+[data-dashboard-target="content"]::-webkit-scrollbar-thumb,
+#container-manage::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+[data-dashboard-target="content"]::-webkit-scrollbar-thumb:hover,
+#container-manage::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

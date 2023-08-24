@@ -44,7 +44,7 @@ user3 = User.create!(
 
 # Seed the instruments
 instruments.each do |instrument|
-  2.times do |i|
+  10.times do |i|
     img_url = i.zero? ? instrument[:img1] : instrument[:img2]
 
     inst = Instrument.new(
