@@ -3,7 +3,9 @@
     <div class="show-col">
       <div class="show-card">
         <h1 class="show-title"><%= @name %></h1>
-        <img src="<%= @image %>" class="show-img" alt="<%= @name %>">
+        <% if @instrument.photo.attached? %>
+          <%= cl_image_tag @instrument.photo.key, class: "card-img-top", alt: @instrument.name %>
+        <% end %>
       <div class="show-description">
           <p class="text_card"> City: <%= @city %></p>
           <p class="text_card"> Genre: <%= @genre %></p>

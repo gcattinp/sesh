@@ -1,16 +1,24 @@
+require "open-uri"
+
 Instrument.destroy_all
 User.destroy_all
 Booking.destroy_all
-# Predefined data
+
+
 genres = ["Rock", "Jazz", "Classical", "Pop", "Country", "Hip Hop", "Blues", "Electronic", "Folk", "R&B"]
 cities = ["Madrid", "Paris", "London", "Lima", "Berlin", "Lisbon", "Rome", "Barcelona", "New York", "Tokyo"]
 
 instruments = [
-  { name: "Piano", img1: "piano_1.png", img2: "piano_2.png" },
-  { name: "Trumpet", img1: "trumpet_1.png", img2: "trumpet_2.png" },
-  { name: "Guitar", img1: "guitar_1.png", img2: "guitar_2.png" },
-  { name: "Bass", img1: "bass_1.png", img2: "bass_2.png" },
-  { name: "Drums", img1: "drum_1.png", img2: "drum_2.png" }
+  { name: "Piano", img1: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801435/development/y8phly5ur351v1jpmwc6m3ulmovc.png",
+    img2: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801433/development/bupvvbh8939rvin2an7pc4imuz4k.png" },
+  { name: "Trumpet", img1: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801438/development/n9q945w60zqkllz6sirrhm9lwib4.png",
+    img2: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801438/development/n9q945w60zqkllz6sirrhm9lwib4.png" },
+  { name: "Guitar", img1: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801444/development/kneki262eb1eox937oolk7sgydrz.png",
+    img2: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801442/development/d4e0i44pwd58bx2d0y8a43x1ym5p.png" },
+  { name: "Bass", img1: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801446/development/a48h0n9c216kaf8rt2to488jkpmn.png",
+    img2: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801444/development/kneki262eb1eox937oolk7sgydrz.png" },
+  { name: "Drums", img1: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801449/development/nwqv5ozma5j9s8rmtpgonqgqx4gf.png",
+    img2: "https://res.cloudinary.com/dzm55bol0/image/upload/v1692801448/development/8uzvjbkegzk5khi5qoctz44zesim.png" }
 ]
 
 user1 = User.create!(
@@ -37,8 +45,7 @@ user3 = User.create!(
 # Seed the instruments
 instruments.each do |instrument|
   2.times do |i|
-    img = i.zero? ? instrument[:img1] : instrument[:img2]
-    image_path = Rails.root.join('db', 'seed_images', img)
+    img_url = i.zero? ? instrument[:img1] : instrument[:img2]
 
     inst = Instrument.new(
       name: instrument[:name],
@@ -47,10 +54,11 @@ instruments.each do |instrument|
       genre: genres.sample,
       available: rand(20..200),
       price: rand(20..200),
-      user: [user1, user2, user3].sample # Associate with one of the existing users
+      user: [user1, user2, user3].sample
     )
 
-    inst.image.attach(io: File.open(image_path), filename: img, content_type: 'image/png')
+    file = URI.open(img_url)
+    inst.photo.attach(io: file, filename: File.basename(img_url), content_type: 'image/png')
     inst.save!
   end
 end
