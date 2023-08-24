@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
 
-  resources :instruments, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :instruments do
     resources :bookings, only: [:new, :create]
   end
-  
-  resources :instruments, only: [:destroy]
-  
-  resources :bookings, only: [:show, :edit, :update, :destroy]
+
+  resources :bookings, only: [:show, :edit, :update, :destroy] do
+    member do
+      patch :approve
+      patch :decline
+    end
+  end
 end

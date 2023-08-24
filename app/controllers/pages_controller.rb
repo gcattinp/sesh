@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @bookings = current_user.bookings
+    @requests = Booking.joins(:instrument).where(instruments: { user: current_user })
     @instruments = current_user.instruments
   end
 end

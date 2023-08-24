@@ -1,30 +1,95 @@
-<h1>Your Dashboard</h1>
+<h1 id= "h1-dash">Dashboard</h1>
+<div class="main-container-dash">
+  <div class="left-container-dash" data-controller="dashboard">
+    <div class="headers-bookings">
+      <button class="button-bookings" data-action="click->dashboard#toggleBookings"> Bookings </button>
+      <button class="button-offers" data-action="click->dashboard#toggleOffers"> Offers </button>
+    </div>
+    <div data-dashboard-target="content" id="bookings">
+      <h4> Accepted </h4>
+      <hr>
+      <% @bookings.select { |booking| booking.status == "approved" }.each do |booking| %>
+      <div>
+        Instrument: <%= booking.instrument.name %><br>
+        Start Date: <%= booking.start_date %><br>
+        End Date: <%= booking.end_date %><br>
+        Status: <%= booking.status %><br>
+      </div>
+      <%= link_to "Delete",
+        booking_path(booking),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+      <hr>
+      <% end %>
+      <h4> Pending </h4>
+      <hr>
+      <% @bookings.select { |booking| booking.status == "pending" }.each do |booking| %>
+      <div>
+        Instrument: <%= booking.instrument.name %><br>
+        Start Date: <%= booking.start_date %><br>
+        End Date: <%= booking.end_date %><br>
+        Status: <%= booking.status %><br>
+      </div>
+      <%= link_to "Delete",
+        booking_path(booking),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+      <hr>
+      <% end %>
+    </div>
 
+    <div data-dashboard-target="content" id="offers" style="display: none;">
+      <h4> Accepted </h4>
+      <hr>
+      <% @requests.select { |booking| booking.status == "approved" }.each do |booking| %>
+        <div>
+          Request by: <%= booking.user.username %><br>
+          Instrument: <%= booking.instrument.name %><br>
+          Start Date: <%= booking.start_date %><br>
+          End Date: <%= booking.end_date %><br>
+          Status: <%= booking.status %><br>
+        </div>
+        <hr>
+      <% end %>
 
-<h2> Manage Bookings </h2>
-<% @bookings.each do |booking| %>
-  <div>
-    Instrument: <%= booking.instrument.name %><br>
-    Start Date: <%= booking.start_date %><br>
-    End Date: <%= booking.end_date %><br>
-    <hr>
+      <h4> Pending </h4>
+      <hr>
+      <% @requests.select { |booking| booking.status == "pending" }.each do |booking| %>
+        <div>
+          Request by: <%= booking.user.username %><br>
+          Instrument: <%= booking.instrument.name %><br>
+          Start Date: <%= booking.start_date %><br>
+          End Date: <%= booking.end_date %><br>
+          Status: <%= booking.status %><br>
+          <%= button_to "Accept", approve_booking_path(booking), method: :patch %>
+          <%= button_to "Decline", decline_booking_path(booking), method: :patch %>
+          <%= link_to "Delete",
+              booking_path(booking),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+        </div>
+        <hr>
+      <% end %>
+    </div>
   </div>
-  <%= link_to "Delete",
-    booking_path(booking),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-<% end %>
- <hr>
-<h2> Manage Instruments </h2>
-<% @instruments.each do |instrument| %>
-  <div>
-    Instrument: <%= instrument.name %><br>
-    Location: <%= instrument.city %><br>
+
+
+  <div class="right-container-dash">
+    <h2> Manage Instruments </h2>
+    <% @instruments.each do |instrument| %>
+      <div>
+        Instrument: <%= instrument.name %><br>
+        Location: <%= instrument.city %><br>
+      </div>
+      <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }%>
+      <hr>
+    <% end %>
   </div>
-  <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }%>
-  <hr>
-<% end %>
+</div>
 
-<%= link_to "Create Instrument", new_instrument_path %>
-
-<%= link_to "Back to Instruments", instruments_path %>
+<div class="links_container">
+  <div class="links">
+    <%= link_to "Create Instrument", new_instrument_path, class: "link"  %>
+    <%= link_to "Back to Instruments", instruments_path, class: "link"  %>
+  </div>
+</div>
