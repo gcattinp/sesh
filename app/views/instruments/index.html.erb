@@ -6,6 +6,8 @@
   <%= submit_tag "Search", class: "search-button" %>
 <% end %>
 
+
+
 <div class="instrument-grid">
   <% @instruments.each do |instrument| %>
     <div class="instrument-card">
@@ -13,7 +15,7 @@
           <%= cl_image_tag instrument.photo.key, class: "instrument-card__img", alt: instrument.name %>
       <% end %>
       <h2><%= instrument.name %></h2>
-      <p class="text-show-page"> <%= instrument.description %></p>
+      <p class="text-show-page"><%= instrument.description %></p>
       <p>Posted by: <%= instrument.user.username %></p>
       <p><%= instrument.city %></p>
       <p>From price: <%= instrument.price %></p>
@@ -23,9 +25,10 @@
   <% end %>
 </div>
 
+
 <div class="links_container">
   <div class="links">
     <%= link_to "Add a New Instrument", new_instrument_path, class: "link" %>
     <%= link_to "Back to Dashboard", dashboard_path, class: "link" %>
-  </div>
+  </div
 </div>
