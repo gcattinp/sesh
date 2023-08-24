@@ -1,4 +1,4 @@
-#h1-dash {
+#h1-sesh {
   margin-left: 125px;
   font-weight: bold;
   font-style: italic;
@@ -67,5 +67,38 @@ hr {
 }
 
 .right-container-dash h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+#container-manage {
+  background-color: white;
+  padding: 20px;
+  border: 2px solid black;
+  overflow-y: auto;
+  height: calc(100% - 70px);
+}
+
+.booking-container, .offer-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.booking-delete, .offer-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.delete-button {
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  color: darkred;
 }
