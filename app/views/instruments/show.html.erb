@@ -3,8 +3,8 @@
     <div class="col-md-8">
       <div class="card bg-light text-dark p-4">
         <h1 class="text-display-3 new-pro-layout">Instrument: <%= @name %></h4>
-        <% if @instrument.image.attached? %>
-          <%= image_tag @instrument.image, class: "card-img-top", alt: @instrument.name %>
+        <% if @instrument.photo.attached? %>
+          <%= cl_image_tag @instrument.photo.key, class: "card-img-top", alt: @instrument.name %>
         <% end %>
         <p class="card-text">City: <%= @city %></p>
         <p class="card-text">Genre: <%= @genre %></p>

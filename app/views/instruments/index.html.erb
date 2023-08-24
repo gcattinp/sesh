@@ -9,8 +9,8 @@
 <div class="instrument-grid">
   <% @instruments.each do |instrument| %>
     <div class="instrument-card">
-      <% if instrument.image.attached? %>
-          <%= image_tag instrument.image, class: "instrument-card__img", alt: instrument.name %>
+      <% if instrument.photo.attached? %>
+          <%= cl_image_tag instrument.photo.key, class: "instrument-card__img", alt: instrument.name %>
       <% end %>
       <h2><%= instrument.name %></h2>
       <p class="text-show-page"> <%= instrument.description %></p>

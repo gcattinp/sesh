@@ -20,7 +20,6 @@ class InstrumentsController < ApplicationController
     @city = @instrument.city
     @price = @instrument.price
     @available = @instrument.available
-    @image = @instrument.image
   end
 
   def new
@@ -55,6 +54,6 @@ class InstrumentsController < ApplicationController
 
   private
   def instrument_params
-    params.require(:instrument).permit(:name, :city, :description, :image, :available, :price, :genre)
+    params.require(:instrument).permit(:name, :city, :description, :photo, :available, :price, :genre)
   end
 end
