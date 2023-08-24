@@ -23,31 +23,8 @@
   padding: 15Px;
 }
 
-// .nav-link {
-//   display: inline-block;
-//   padding: 15px 0;
-//   margin: 15px 25px;
-//   position: relative;
-//   text-decoration: none;
-//   text-transform: uppercase;
-//   color: #0f0f0f;
-//   font-weight: 800;
-//   font-size: 24px;
-//   transition: color 0.3s ease; /* Add smooth transition for text color */
-// }
-
-// .nav-link:hover {
-//   color: blue; /* Change text color on hover */
-// }
-
-
-// .dropdown{
-//   display: flex;
-//   align-items: center;
-// }
-
 .nav-link {
-  background-image: linear-gradient(to right, blue, blue 50%, #000 50%);
+  background-image: linear-gradient(to right, grey, grey 50%, #000 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -65,7 +42,7 @@
 }
 
 .nav-link::before {
-  background: blue;
+  background: grey;
   content: "";
   display: block;
   position: absolute;

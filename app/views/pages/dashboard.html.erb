@@ -18,7 +18,10 @@
           Status: <%= booking.status %><br>
         </div>
         <div class="booking-delete">
-          <%= link_to "×", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %>
+          <%= link_to "×",
+          booking_path(booking),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "delete-button" %>
         </div>
       </div>
       <hr>
@@ -35,7 +38,10 @@
           Status: <%= booking.status %><br>
         </div>
         <div class="booking-delete">
-          <%= link_to "×", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %>
+          <%= link_to "×",
+          booking_path(booking),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "delete-button" %>
         </div>
       </div>
       <hr>
@@ -66,10 +72,12 @@
           Status: <%= booking.status %><br>
           <%= button_to "Accept", approve_booking_path(booking), method: :patch %>
           <%= button_to "Decline", decline_booking_path(booking), method: :patch %>
-          <%= link_to "Delete",
-              booking_path(booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-          %>
+          <div class="offer-delete">
+          <%= link_to "×",
+          booking_path(booking),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "delete-button" %>
+          </div>
         </div>
         <hr>
       <% end %>
@@ -81,11 +89,14 @@
     <h2> Manage Instruments </h2>
     <div id="container-manage">
     <% @instruments.each do |instrument| %>
-      <div>
+      <div class="instrument-container"> <!-- Added this class -->
         Instrument: <%= instrument.name %><br>
         Location: <%= instrument.city %><br>
+
+        <div class="instrument-delete">
+          <%= link_to "×", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "delete-button" %>
+        </div>
       </div>
-      <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }%>
       <hr>
     <% end %>
     </div>
