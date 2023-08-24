@@ -1,43 +1,46 @@
-<h1 id= "h1-dash">Dashboard</h1>
+<h1 id="h1-sesh">Dashboard</h1>
 <div class="main-container-dash">
   <div class="left-container-dash" data-controller="dashboard">
     <div class="headers-bookings">
       <button class="button-bookings" data-action="click->dashboard#toggleBookings"> Bookings </button>
       <button class="button-offers" data-action="click->dashboard#toggleOffers"> Offers </button>
     </div>
+
     <div data-dashboard-target="content" id="bookings">
       <h4> Accepted </h4>
       <hr>
       <% @bookings.select { |booking| booking.status == "approved" }.each do |booking| %>
-      <div>
-        Instrument: <%= booking.instrument.name %><br>
-        Start Date: <%= booking.start_date %><br>
-        End Date: <%= booking.end_date %><br>
-        Status: <%= booking.status %><br>
+      <div class="booking-container">
+        <div class="booking-details">
+          Instrument: <%= booking.instrument.name %><br>
+          Start Date: <%= booking.start_date %><br>
+          End Date: <%= booking.end_date %><br>
+          Status: <%= booking.status %><br>
+        </div>
+        <div class="booking-delete">
+          <%= link_to "×", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %>
+        </div>
       </div>
-      <%= link_to "Delete",
-        booking_path(booking),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
       <hr>
       <% end %>
+
       <h4> Pending </h4>
       <hr>
       <% @bookings.select { |booking| booking.status == "pending" }.each do |booking| %>
-      <div>
-        Instrument: <%= booking.instrument.name %><br>
-        Start Date: <%= booking.start_date %><br>
-        End Date: <%= booking.end_date %><br>
-        Status: <%= booking.status %><br>
+      <div class="booking-container">
+        <div class="booking-details">
+          Instrument: <%= booking.instrument.name %><br>
+          Start Date: <%= booking.start_date %><br>
+          End Date: <%= booking.end_date %><br>
+          Status: <%= booking.status %><br>
+        </div>
+        <div class="booking-delete">
+          <%= link_to "×", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete-button" %>
+        </div>
       </div>
-      <%= link_to "Delete",
-        booking_path(booking),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
       <hr>
       <% end %>
     </div>
-
     <div data-dashboard-target="content" id="offers" style="display: none;">
       <h4> Accepted </h4>
       <hr>
@@ -76,6 +79,7 @@
 
   <div class="right-container-dash">
     <h2> Manage Instruments </h2>
+    <div id="container-manage">
     <% @instruments.each do |instrument| %>
       <div>
         Instrument: <%= instrument.name %><br>
@@ -84,6 +88,7 @@
       <%= link_to "Delete instrument", instrument_path(instrument), data: { turbo_method: :delete, confirm: "Are you sure?" }%>
       <hr>
     <% end %>
+    </div>
   </div>
 </div>
 
