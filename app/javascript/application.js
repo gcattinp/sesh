@@ -5,7 +5,7 @@ import "@popperjs/core"
 import "bootstrap"
 
 const carousel = document.querySelector('.carousel');
-carousel.flickity({
-  autoPlay: 100,
+new Flickity(carousel, {
+  autoPlay: 3000,
   prevNextButtons: false
 });
