@@ -1,0 +1,15 @@
+<h1 class="mb-4" id="h1-instrument">Edit an Instrument</h1>
+<div class="container mt-5">
+  <%= render 'form',
+  instrument: @instrument %>
+</div>
+<div class="links_container">
+  <div class="links">
+    <%= link_to "Back to Instruments",
+    instruments_path,
+    class: "link" %>
+    <%= link_to "Back to dashboard",
+    dashboard_path,
+    class: "link" %>
+  </div>
+</div>
