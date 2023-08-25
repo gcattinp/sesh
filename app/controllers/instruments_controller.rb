@@ -41,6 +41,20 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.find(params[:id])
   end
 
+  def update
+    @instrument = Instrument.find(params[:id])
+
+    if @instrument.user == current_user
+      if @instrument.update(instrument_params)
+        redirect_to instrument_path(@instrument), notice: "Instrument was successfully updated!"
+      else
+        render :edit
+      end
+    else
+      redirect_to instrument_path(@instrument), alert: "You don't have permission to edit this instrument"
+    end
+  end
+
   def destroy
     @instrument = Instrument.find(params[:id])
 
