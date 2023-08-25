@@ -64,19 +64,17 @@
       <h4> Pending </h4>
       <hr>
       <% @requests.select { |booking| booking.status == "pending" }.each do |booking| %>
-        <div>
-          Request by: <%= booking.user.username %><br>
-          Instrument: <%= booking.instrument.name %><br>
-          Start Date: <%= booking.start_date %><br>
-          End Date: <%= booking.end_date %><br>
-          Status: <%= booking.status %><br>
-          <%= button_to "Accept", approve_booking_path(booking), method: :patch %>
-          <%= button_to "Decline", decline_booking_path(booking), method: :patch %>
-          <div class="offer-delete">
-          <%= link_to "×",
-          booking_path(booking),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-          class: "delete-button" %>
+        <div id="container-pending">
+          <div class="offer-details">
+            Request by: <%= booking.user.username %><br>
+            Instrument: <%= booking.instrument.name %><br>
+            Start Date: <%= booking.start_date %><br>
+            End Date: <%= booking.end_date %><br>
+            Status: <%= booking.status %><br>
+          </div>
+          <div id="btn-offer-container">
+            <%= button_to "Accept", approve_booking_path(booking), class: "btn-pending", method: :patch %>
+            <%= button_to "Decline", decline_booking_path(booking), class: "btn-pending", method: :patch %>
           </div>
         </div>
         <hr>
@@ -108,4 +106,4 @@
     <%= link_to "Create Instrument", new_instrument_path, class: "link"  %>
     <%= link_to "Back to Instruments", instruments_path, class: "link"  %>
   </div>
-</div>
+  </div>

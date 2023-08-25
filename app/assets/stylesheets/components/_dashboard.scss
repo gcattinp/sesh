@@ -131,3 +131,25 @@ hr {
 #container-manage::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+// Buttons for accept/delete
+
+#container-pending {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.btn-pending {
+  color: white;
+  background-color: black;
+  border:black;
+  border: 2px solid white;
+  width: 70px;
+}
+
+.btn-pending:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
