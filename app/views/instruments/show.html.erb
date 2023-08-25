@@ -28,8 +28,11 @@
           <%= link_to 'Log in to book this instrument', new_user_session_path, class: 'show-link' %>
         <% end %>
       </div>
-      <div class="show-center">
-        <%= link_to "Back to Instruments", instruments_path, class: 'show-nav-link' %>
+        <div class="links_container">
+          <div class="links">
+          <%= link_to "Back to Instruments", instruments_path, class: 'link' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
